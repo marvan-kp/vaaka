@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Heart, Instagram, Menu, X, ShoppingBag, User } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { useAuth } from '../context/AuthContext';
 import CartDrawer from './CartDrawer';
 import './Navbar.css';
 
@@ -10,6 +11,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const { cart } = useShop();
+    const { currentUser } = useAuth();
     const navigate = useNavigate();
 
     const handleSearch = (e) => {
@@ -59,7 +61,7 @@ const Navbar = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </form>
-                    <Link to="/login" className="action-icon" aria-label="Login">
+                    <Link to={currentUser ? "/profile" : "/login"} className="action-icon" aria-label="Login">
                         <User size={20} />
                     </Link>
                     <Link to="/wishlist" className="action-icon" aria-label="Wishlist">

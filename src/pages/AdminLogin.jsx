@@ -15,6 +15,13 @@ const AdminLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        // Explicitly check for the authorized admin email
+        if (email !== 'marvankp20@gmail.com') {
+            setError('Access Denied. You are not authorized as an Admin.');
+            return;
+        }
+
         setLoading(true);
         const res = await loginAdmin(email, password);
         if (res?.success) {
