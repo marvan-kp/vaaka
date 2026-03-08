@@ -10,7 +10,7 @@ const Register = () => {
     const [displayName, setDisplayName] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { signup } = useAuth();
+    const { signup, loginWithGoogle } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -27,6 +27,20 @@ const Register = () => {
             navigate('/');
         } catch (err) {
             setError(err.message || 'Failed to create an account.');
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGoogleRegister = async () => {
+        try {
+            setError('');
+            setLoading(true);
+            await loginWithGoogle();
+            navigate('/');
+        } catch (err) {
+            setError(err.message || 'Failed to register with Google.');
             console.error(err);
         } finally {
             setLoading(false);
@@ -75,10 +89,25 @@ const Register = () => {
                             onChange={(e) => setPasswordConfirm(e.target.value)}
                         />
                     </div>
-                    <button disabled={loading} type="submit" className="btn-primary w-100">
+                    <button disabled={loading} type="submit" className="btn-primary auth-submit">
                         {loading ? 'Registering...' : 'Register'}
                     </button>
                 </form>
+
+                <div className="auth-divider">
+                    <span>OR</span>
+                </div>
+
+                <button
+                    onClick={handleGoogleRegister}
+                    disabled={loading}
+                    className="btn-secondary google-btn"
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+                >
+                    <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" style={{ width: '20px', height: '20px' }} />
+                    Sign up with Google
+                </button>
+
                 <div className="auth-link">
                     Already have an account? <Link to="/login">Log in here</Link>
                 </div>
