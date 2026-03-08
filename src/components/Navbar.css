@@ -1,0 +1,232 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    /* Hidden on desktop */
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 8px;
+    margin-left: -8px;
+    /* Alignment compensation */
+    transition: color var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    color: var(--color-accent);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+}
+
+.nav-logo-image {
+    height: 150px;
+    object-fit: contain;
+    margin: -35px 0;
+    transform: scale(1.2);
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #C9A227;
+    letter-spacing: 1px;
+}
+
+.logo-subtext {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--color-text);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--glass-border);
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.875rem;
+    outline: none;
+    width: 120px;
+    transition: width var(--transition-normal);
+}
+
+.search-bar input:focus {
+    width: 200px;
+}
+
+.search-bar input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-bar svg {
+    color: var(--color-text-muted);
+}
+
+.action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.action-icon:hover {
+    color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+.cart-icon-btn {
+    background: transparent;
+    border: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--color-accent);
+    color: var(--color-background);
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        z-index: 200;
+    }
+
+    .nav-logo-image {
+        height: 60px;
+        max-width: 140px;
+        margin: -10px 0;
+        transform: scale(1.1);
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal);
+        z-index: 150;
+    }
+
+    .mobile-menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 250px;
+        height: 100vh;
+        background: var(--color-secondary);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 100px 24px 24px;
+        gap: 24px;
+        transition: transform var(--transition-normal);
+        z-index: 160;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-links.open {
+        transform: translateX(300px);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        width: 100%;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .search-bar {
+        display: none;
+    }
+
+    .nav-actions {
+        gap: 12px;
+    }
+
+    .action-icon {
+        padding: 4px;
+    }
+
+    .action-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}

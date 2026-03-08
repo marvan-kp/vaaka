@@ -1,0 +1,351 @@
+.product-card {
+    background: var(--color-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.product-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+/* Carousel Overlay on Product Card */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity var(--transition-fast), background var(--transition-fast);
+}
+
+.carousel-arrow:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.product-image-container:hover .carousel-arrow {
+    opacity: 1;
+}
+
+.carousel-prev {
+    left: 8px;
+}
+
+.carousel-next {
+    right: 8px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: background var(--transition-fast);
+}
+
+.carousel-dot.active {
+    background: var(--color-accent);
+}
+
+.product-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+}
+
+.badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+}
+
+.badge-accent {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.badge-trending {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primary);
+}
+
+.badge-deal {
+    background: rgba(142, 68, 173, 0.9);
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.badge-warning {
+    background: rgba(243, 156, 18, 0.9);
+    color: white;
+}
+
+.badge-error {
+    background: rgba(231, 76, 60, 0.9);
+    color: white;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    border: 1px solid var(--glass-border);
+    z-index: 2;
+    transition: all var(--transition-fast);
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-category {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-text);
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.product-name a {
+    transition: color var(--transition-fast);
+}
+
+.product-name a:hover {
+    color: var(--color-accent);
+}
+
+.product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.price-discount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.price-mrp {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+}
+
+.product-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text);
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+}
+
+.btn-buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-grow: 1;
+    border-radius: var(--radius-sm);
+    padding: 0;
+    height: 44px;
+    text-decoration: none;
+}
+
+.btn-buy.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(1);
+}
+
+/* Mobile Adjustments for 2-column layout */
+@media (max-width: 768px) {
+    .product-info {
+        padding: 10px;
+    }
+
+    .badge {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+    }
+
+    .product-badges {
+        top: 8px;
+        left: 8px;
+        gap: 4px;
+    }
+
+    .wishlist-btn {
+        top: 8px;
+        right: 8px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .wishlist-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .product-category {
+        font-size: 0.65rem;
+        margin-bottom: 4px;
+    }
+
+    .product-name {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .price-discount {
+        font-size: 1.05rem;
+    }
+
+    .price-mrp {
+        font-size: 0.75rem;
+    }
+
+    .product-price-row {
+        gap: 6px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .product-actions {
+        gap: 6px;
+    }
+
+    .btn-icon.btn-view {
+        display: none;
+        /* Hide eye icon on mobile to give space to Buy button */
+    }
+
+    .btn-buy {
+        height: 32px;
+        font-size: 0.75rem;
+        padding: 0 8px;
+    }
+
+    .btn-buy svg {
+        width: 14px;
+        height: 14px;
+    }
+}
