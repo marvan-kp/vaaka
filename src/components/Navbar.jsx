@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Heart, Instagram, Phone, Menu, X, ShoppingBag } from 'lucide-react';
+import { Search, Heart, Instagram, Menu, X, ShoppingBag, User } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import CartDrawer from './CartDrawer';
 import './Navbar.css';
@@ -37,17 +37,18 @@ const Navbar = () => {
                 </button>
 
                 <Link to="/" className="nav-logo" onClick={closeMenu}>
-                    <img src="/logo.png" alt="iVault Accessories" className="nav-logo-image" />
-                    <span className="logo-text">iVault <span className="logo-subtext">Accessories</span></span>
+                    <img src="/logo.png" alt="Vaaka" className="nav-logo-image" style={{ height: '40px', objectFit: 'contain' }} />
+                    <span className="logo-text" style={{ fontFamily: 'serif', letterSpacing: '1px' }}>വാക <span className="logo-subtext" style={{fontFamily: 'sans-serif', letterSpacing: '2px', fontSize: '0.6rem'}}>THE PERFECT OUTFIT</span></span>
                 </Link>
 
                 <div className={`mobile-menu-overlay ${isMenuOpen ? 'open' : ''}`} onClick={closeMenu}></div>
 
                 <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
                     <Link to="/" onClick={closeMenu}>Home</Link>
-                    <Link to="/products" onClick={closeMenu}>Products</Link>
-                    <Link to="/categories" onClick={closeMenu}>Categories</Link>
-                    <Link to="/trending" onClick={closeMenu}>Trending</Link>
+                    <Link to="/products" onClick={closeMenu}>Collection</Link>
+                    <Link to="/products?category=Men" onClick={closeMenu}>Men</Link>
+                    <Link to="/products?category=Women" onClick={closeMenu}>Women</Link>
+                    <Link to="/products?category=Others" onClick={closeMenu}>Others</Link>
                 </div>
                 <div className="nav-actions">
                     <form className="search-bar" onSubmit={handleSearch}>
@@ -59,6 +60,9 @@ const Navbar = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </form>
+                    <Link to="/login" className="action-icon" aria-label="Login">
+                        <User size={20} />
+                    </Link>
                     <Link to="/wishlist" className="action-icon" aria-label="Wishlist">
                         <Heart size={20} />
                     </Link>

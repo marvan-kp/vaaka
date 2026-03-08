@@ -1,10 +1,12 @@
 import React from 'react';
-import { X, Plus, Minus, ShoppingBag, MessageCircle } from 'lucide-react';
+import { X, Plus, Minus, ShoppingBag, CreditCard } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useShop } from '../context/ShopContext';
 import './CartDrawer.css';
 
 const CartDrawer = ({ isOpen, onClose }) => {
     const { cart, promoCodes, removeFromCart, updateQuantity } = useShop();
+    const navigate = useNavigate();
     const [promoInput, setPromoInput] = React.useState('');
     const [appliedPromo, setAppliedPromo] = React.useState(null);
     const [promoError, setPromoError] = React.useState('');
@@ -67,31 +69,8 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
     const handleCheckout = () => {
         if (cart.length === 0) return;
-
-        let message = "Hello iVault Accessories, I would like to place an order:\n\n";
-
-        cart.forEach((item, index) => {
-            message += `${index + 1}. *${item.name}*\n`;
-            message += `   Quantity: ${item.quantity}\n`;
-            message += `   Price: ₹${(item.discountPrice * item.quantity).toLocaleString()}\n\n`;
-        });
-
-        const subtotal = calculateSubtotal();
-        const total = calculateTotal();
-
-        if (appliedPromo) {
-            message += `*Subtotal: ₹${subtotal.toLocaleString()}*\n`;
-            message += `*Promo Code Applied:* ${appliedPromo.code} (-₹${(subtotal - total).toLocaleString()})\n`;
-        }
-
-        message += `*Final Amount: ₹${total.toLocaleString()}*\n\n`;
-        message += "Please let me know how to proceed with payment and delivery.";
-
-        // WhatsApp number provided by user
-        const phoneNumber = "+917907443251";
-        const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
-
-        window.open(whatsappUrl, '_blank');
+        onClose();
+        navigate('/checkout');
     };
 
     if (!isOpen && cart.length === 0) return null;
@@ -187,9 +166,9 @@ const CartDrawer = ({ isOpen, onClose }) => {
                             <span>Total</span>
                             <span>₹{calculateTotal().toLocaleString()}</span>
                         </div>
-                        <p className="checkout-note" style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '10px' }}>Checkout sends your order to our WhatsApp.</p>
+                        <p className="checkout-note" style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '10px' }}>Secure checkout with Vaaka.</p>
                         <button className="btn-primary btn-checkout" onClick={handleCheckout} style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', padding: '12px' }}>
-                            <MessageCircle size={18} /> Order via WhatsApp
+                            <CreditCard size={18} /> Proceed to Checkout
                         </button>
                     </div>
                 )}

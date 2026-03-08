@@ -4,13 +4,13 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBaHFcoe_3PppGcHXgEeZpu83xW28vOacQ",
-    authDomain: "ivault-9fc40.firebaseapp.com",
-    projectId: "ivault-9fc40",
-    storageBucket: "ivault-9fc40.firebasestorage.app",
-    messagingSenderId: "993764408430",
-    appId: "1:993764408430:web:09be06f8deea0f56273a7f",
-    measurementId: "G-LPN6B2BNKV"
+    apiKey: "AIzaSyBJSqqmw9PFzWxb1ULgOFT4sqW5EfJdzlE",
+    authDomain: "vaaka-clothing.firebaseapp.com",
+    projectId: "vaaka-clothing",
+    storageBucket: "vaaka-clothing.firebasestorage.app",
+    messagingSenderId: "690120656912",
+    appId: "1:690120656912:web:108b5b6dd2876e9bdb2295",
+    measurementId: "G-LNWP4M4DKQ"
 };
 
 // Initialize Firebase

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useShop } from '../context/ShopContext';
-import { ArrowLeft, MessageCircle, Heart, ShieldCheck, Truck, RefreshCcw, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, CreditCard, Heart, ShieldCheck, Truck, RefreshCcw, ShoppingBag } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import './ProductDetail.css';
 
@@ -48,9 +48,11 @@ const ProductDetail = () => {
     const inWishlist = isWishlisted(product.id);
     const discountPercentage = Math.round(((mrp - discountPrice) / mrp) * 100);
 
-    const generateWhatsAppLink = () => {
-        const message = `Hello iVault Accessories, I want to buy this product.\n\nProduct Name: ${name}\nPrice: ₹${discountPrice}\n\nIs this product available?`;
-        return `https://wa.me/917907443251?text=${encodeURIComponent(message)}`;
+    const handleBuyNow = () => {
+        if (stock > 0) {
+            addToCart(product);
+            navigate('/checkout');
+        }
     };
 
     const getStockStatus = () => {
@@ -188,17 +190,17 @@ const ProductDetail = () => {
                             <span>{stock === 0 ? 'Out of Stock' : 'Add to Cart'}</span>
                         </button>
 
-                        <a
-                            href={stock > 0 ? generateWhatsAppLink() : '#'}
-                            target={stock > 0 ? "_blank" : "_self"}
-                            rel="noreferrer"
-                            className={`btn-secondary btn-buy-large btn-whatsapp ${stock === 0 ? 'disabled' : ''}`}
-                            onClick={(e) => stock === 0 && e.preventDefault()}
-                            style={{ background: '#25D366', color: 'white', borderColor: '#25D366' }}
+                        <button
+                            className={`btn-secondary btn-buy-large ${stock === 0 ? 'disabled' : ''}`}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handleBuyNow();
+                            }}
+                            disabled={stock === 0}
                         >
-                            <MessageCircle size={24} />
-                            <span>Buy on WhatsApp</span>
-                        </a>
+                            <CreditCard size={24} />
+                            <span>Buy Now</span>
+                        </button>
                     </div>
 
                     {specifications && specifications.length > 0 && (

@@ -8,36 +8,47 @@ import Wishlist from './pages/Wishlist';
 import ProductDetail from './pages/ProductDetail';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Checkout from './pages/Checkout';
 
 import ScrollToTop from './components/ScrollToTop';
+
+import { AuthProvider } from './context/AuthContext';
 
 const Placeholder = ({ title }) => <div className="container" style={{ paddingTop: '100px', minHeight: '80vh' }}><h1>{title}</h1></div>;
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="app">
-        <Navbar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
+    <AuthProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="app">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Products />} />
 
-            <Route path="/categories" element={<Products />} />
-            <Route path="/trending" element={<Products />} />
-            <Route path="/deals" element={<Products />} />
+              <Route path="/categories" element={<Products />} />
+              <Route path="/trending" element={<Products />} />
+              <Route path="/deals" element={<Products />} />
 
-            <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
 
-            <Route path="/admin" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/checkout" element={<Checkout />} />
+
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

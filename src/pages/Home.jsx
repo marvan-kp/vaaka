@@ -94,11 +94,11 @@ const Home = () => {
                 <section className="hero-section">
                     <div className="hero-bg-gradient"></div>
                     <div className="container hero-container">
-                        <h1 className="hero-title">iVault Accessories</h1>
-                        <p className="hero-subtitle">Premium Accessories & Tech Essentials</p>
+                        <h1 className="hero-title" style={{ fontFamily: 'serif' }}>വാക</h1>
+                        <p className="hero-subtitle">The Perfect Outfit</p>
                         <div className="hero-actions">
-                            <Link to="/products" className="btn-primary">Browse Products</Link>
-                            <Link to="/trending" className="btn-secondary">View Trending</Link>
+                            <Link to="/products" className="btn-primary">Shop Collection</Link>
+                            <Link to="/products?category=Men" className="btn-secondary">Men's Wear</Link>
                         </div>
                     </div>
                 </section>
@@ -182,8 +182,8 @@ const Home = () => {
             <section className="instagram-section">
                 <div className="container">
                     <div className="section-header">
-                        <h2 className="section-title">Follow Us @ivault._</h2>
-                        <a href="https://instagram.com/ivault._" target="_blank" rel="noreferrer" className="btn-secondary">
+                        <h2 className="section-title">Follow Us @vaaka.store</h2>
+                        <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="btn-secondary">
                             Follow on Instagram
                         </a>
                     </div>

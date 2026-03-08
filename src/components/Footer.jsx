@@ -12,12 +12,12 @@ const Footer = () => {
             <div className="container footer-container">
                 <div className="footer-brand">
                     <Link to="/" className="footer-logo">
-                        <img src="/logo.png" alt="iVault Accessories" className="footer-logo-img" />
-                        <span className="logo-text">iVault <span>Accessories</span></span>
+                        <img src="/logo.png" alt="Vaaka" className="footer-logo-img" style={{ height: '40px', objectFit: 'contain' }} />
+                        <span className="logo-text" style={{ fontFamily: 'serif', letterSpacing: '1px' }}>വാക</span>
                     </Link>
-                    <p className="footer-tagline">Premium Accessories & Tech Essentials</p>
+                    <p className="footer-tagline">The Perfect Outfit.</p>
                     <div className="footer-socials">
-                        <a href="https://instagram.com/ivault._" target="_blank" rel="noreferrer" aria-label="Instagram">
+                        <a href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
                             <Instagram size={24} />
                         </a>
                         <a href="https://wa.me/917907443251" target="_blank" rel="noreferrer" aria-label="WhatsApp">
@@ -59,7 +59,7 @@ const Footer = () => {
                     <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
                         Developed by <a href="https://www.instagram.com/_marvan_kp_?igsh=cmludzkwMm01NWI4" target="_blank" rel="noreferrer" style={{ color: 'var(--color-accent)', textDecoration: 'none', fontWeight: '500' }}>MARVAN</a>
                     </p>
-                    <p>&copy; 2026 iVault Accessories. All rights reserved.</p>
+                    <p>&copy; 2026 വാക - The Perfect Outfit. All rights reserved.</p>
                 </div>
             </div>
         </footer>
