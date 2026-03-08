@@ -12,8 +12,7 @@ const Footer = () => {
             <div className="container footer-container">
                 <div className="footer-brand">
                     <Link to="/" className="footer-logo">
-                        <img src="/logo.png" alt="Vaaka" className="footer-logo-img" style={{ height: '40px', objectFit: 'contain' }} />
-                        <span className="logo-text" style={{ fontFamily: 'serif', letterSpacing: '1px' }}>വാക</span>
+                        <img src="/logo.png" alt="Vaaka" className="footer-logo-img" style={{ height: '60px', objectFit: 'contain' }} />
                     </Link>
                     <p className="footer-tagline">The Perfect Outfit.</p>
                     <div className="footer-socials">

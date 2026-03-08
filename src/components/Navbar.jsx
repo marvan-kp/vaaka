@@ -37,8 +37,7 @@ const Navbar = () => {
                 </button>
 
                 <Link to="/" className="nav-logo" onClick={closeMenu}>
-                    <img src="/logo.png" alt="Vaaka" className="nav-logo-image" style={{ height: '40px', objectFit: 'contain' }} />
-                    <span className="logo-text" style={{ fontFamily: 'serif', letterSpacing: '1px' }}>വാക <span className="logo-subtext" style={{fontFamily: 'sans-serif', letterSpacing: '2px', fontSize: '0.6rem'}}>THE PERFECT OUTFIT</span></span>
+                    <img src="/logo.png" alt="Vaaka" className="nav-logo-image" style={{ height: '55px', objectFit: 'contain' }} />
                 </Link>
 
                 <div className={`mobile-menu-overlay ${isMenuOpen ? 'open' : ''}`} onClick={closeMenu}></div>

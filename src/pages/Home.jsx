@@ -178,20 +178,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Instagram Feed Section */}
-            <section className="instagram-section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-title">Follow Us @vaaka.store</h2>
-                        <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="btn-secondary">
-                            Follow on Instagram
-                        </a>
-                    </div>
-                    <div className="instagram-widget-container" style={{ marginTop: '30px' }}>
-                        <div className="elfsight-app-8f445d31-ca81-47a4-81d4-5295906ef1a1" data-elfsight-app-lazy></div>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 };
